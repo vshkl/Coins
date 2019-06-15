@@ -30,6 +30,7 @@ class CoinsListAdapter(context: Context) : RecyclerView.Adapter<CoinsListViewHol
         with(coins[position]) {
             holder.tvRank.text = rank.toString()
             holder.tvName.text = name
+            holder.tvSymbol.text = symbol
             holder.tvPrice.text = price
 
             glideRequestBuilder

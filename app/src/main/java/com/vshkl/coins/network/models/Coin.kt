@@ -15,5 +15,5 @@ data class Coin(
     val rank: Int,
     val symbol: String,
     val volume: Long,
-    val websiteUrl: String
+    val websiteUrl: String?
 )

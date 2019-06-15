@@ -1,5 +1,6 @@
 package com.vshkl.coins.stories.coinsList
 
+import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.vshkl.coins.network.CoinrankingAPI
@@ -10,30 +11,35 @@ import retrofit2.Response
 
 class CoinsListViewModel : ViewModel() {
 
-    private lateinit var coinsData: MutableLiveData<Coins>
+    private val coinsData: MutableLiveData<Coins> by lazy {
+        MutableLiveData<Coins>()
+    }
+    private var offset = 0
 
-    fun init() {
-        coinsData = fetchCoins()
+    fun loadCoins() {
+        fetchCoins()
+    }
+
+    fun loadMoreCoins() {
+        offset += 50
+        fetchCoins()
     }
 
     fun getCoins() = coinsData
 
-    private fun fetchCoins(): MutableLiveData<Coins> {
-        val coinsData: MutableLiveData<Coins> = MutableLiveData()
-
-        CoinrankingAPI.instance.getCoins().enqueue(object : Callback<Coins> {
+    private fun fetchCoins() {
+        CoinrankingAPI.instance.getCoins(offset).enqueue(object : Callback<Coins> {
             override fun onResponse(call: Call<Coins>, response: Response<Coins>) {
                 if (response.isSuccessful) {
-                    coinsData.value = response.body()
+                    coinsData.postValue(response.body())
                 }
             }
 
             override fun onFailure(call: Call<Coins>, t: Throwable) {
+                Log.d("CoinsListViewModel", t.toString())
                 coinsData.value = null
             }
         })
-
-        return coinsData
     }
 
 }

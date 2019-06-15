@@ -21,19 +21,14 @@ class CoinsListViewModel : ViewModel() {
     private fun fetchCoins(): MutableLiveData<Coins> {
         val coinsData: MutableLiveData<Coins> = MutableLiveData()
 
-        println("Fetching coins...")
-
         CoinrankingAPI.instance.getCoins().enqueue(object : Callback<Coins> {
             override fun onResponse(call: Call<Coins>, response: Response<Coins>) {
-                println("Got response...")
                 if (response.isSuccessful) {
                     coinsData.value = response.body()
                 }
             }
 
             override fun onFailure(call: Call<Coins>, t: Throwable) {
-                println("Got error...")
-                println(t)
                 coinsData.value = null
             }
         })

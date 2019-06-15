@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.vshkl.coins.R
 import com.vshkl.coins.stories.EndlessScrollListener
+import androidx.recyclerview.widget.DividerItemDecoration
 
 class CoinsListFragment : Fragment() {
 
@@ -32,7 +33,7 @@ class CoinsListFragment : Fragment() {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProviders.of(this).get(CoinsListViewModel::class.java)
         viewModel.loadCoins()
-        viewModel.getCoins().observe(this, Observer { coins ->
+        viewModel.getCoins().observe(viewLifecycleOwner, Observer { coins ->
             coinsListAdapter.setCoins(coins)
         })
     }
@@ -43,6 +44,7 @@ class CoinsListFragment : Fragment() {
         val linearLayoutManager = LinearLayoutManager(context)
 
         rvCoins.layoutManager = linearLayoutManager
+        rvCoins.addItemDecoration(DividerItemDecoration(context!!, DividerItemDecoration.VERTICAL))
         rvCoins.addOnScrollListener(object : EndlessScrollListener(linearLayoutManager) {
             override fun onLoadMore(page: Int, totalItemsCount: Int, view: RecyclerView) {
                 viewModel.loadMoreCoins()

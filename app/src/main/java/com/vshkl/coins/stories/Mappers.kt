@@ -31,7 +31,7 @@ object Mappers {
 
     private fun formatMarketCap(marketCap: Long?): String {
         return when {
-            marketCap != null -> "MCap $$marketCap"
+            marketCap != null -> "$$marketCap"
             else -> ""
         }
     }

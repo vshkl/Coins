@@ -1,7 +1,7 @@
 package com.vshkl.coins.network
 
-import androidx.lifecycle.LiveData
-import com.vshkl.coins.network.models.Coin
+import com.vshkl.coins.network.models.Coins
+import retrofit2.Call
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 import retrofit2.http.GET
@@ -19,6 +19,6 @@ interface CoinrankingAPI {
     }
 
     @GET("coins")
-    fun getCoins(): LiveData<List<Coin>>
+    fun getCoins(): Call<Coins>
 
 }

@@ -37,7 +37,7 @@ class CoinsListViewModel : ViewModel() {
 
             override fun onFailure(call: Call<Coins>, t: Throwable) {
                 Log.d("CoinsListViewModel", t.toString())
-                coinsData.value = null
+//                coinsData.value = null
             }
         })
     }

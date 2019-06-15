@@ -34,7 +34,6 @@ class CoinsListFragment : Fragment() {
         viewModel.loadCoins()
         viewModel.getCoins().observe(this, Observer { coins ->
             coinsListAdapter.setCoins(coins.data.coins)
-            coinsListAdapter.notifyDataSetChanged()
         })
     }
 

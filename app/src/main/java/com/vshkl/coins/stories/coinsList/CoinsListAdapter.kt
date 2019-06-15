@@ -40,6 +40,7 @@ class CoinsListAdapter(context: Context) : RecyclerView.Adapter<CoinsListViewHol
 
     fun setCoins(coins: List<Coin>) {
         this.coins.addAll(coins)
+        notifyDataSetChanged()
     }
 
 }

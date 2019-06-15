@@ -1,7 +1,8 @@
-package com.vshkl.coins
+package com.vshkl.coins.stories
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.vshkl.coins.R
 
 class MainActivity : AppCompatActivity() {
 

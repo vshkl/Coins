@@ -11,5 +11,7 @@ class CoinsListViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
     val ivIcon: ImageView = itemView.ivIcon
     val tvName: TextView = itemView.tvName
     val tvSymbol: TextView = itemView.tvSymbol
+    val tvChange: TextView = itemView.tvChange
+    val tvMarketCap: TextView = itemView.tvMarketCap
     val tvPrice: TextView = itemView.tvPrice
 }

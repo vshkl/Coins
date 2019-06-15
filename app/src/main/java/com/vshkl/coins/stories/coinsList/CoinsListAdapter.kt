@@ -31,6 +31,8 @@ class CoinsListAdapter(context: Context) : RecyclerView.Adapter<CoinsListViewHol
             holder.tvRank.text = rank.toString()
             holder.tvName.text = name
             holder.tvSymbol.text = symbol
+            holder.tvChange.text = change.toString()
+            holder.tvMarketCap.text = marketCap.toString()
             holder.tvPrice.text = price
 
             glideRequestBuilder

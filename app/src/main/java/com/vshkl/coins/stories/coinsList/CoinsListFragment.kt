@@ -33,7 +33,7 @@ class CoinsListFragment : Fragment() {
         viewModel = ViewModelProviders.of(this).get(CoinsListViewModel::class.java)
         viewModel.loadCoins()
         viewModel.getCoins().observe(this, Observer { coins ->
-            coinsListAdapter.setCoins(coins.data.coins)
+            coinsListAdapter.setCoins(coins)
         })
     }
 

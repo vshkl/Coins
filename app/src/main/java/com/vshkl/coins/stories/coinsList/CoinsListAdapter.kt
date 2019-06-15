@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.RequestBuilder
 import com.vshkl.coins.R
-import com.vshkl.coins.network.models.Coin
+import com.vshkl.coins.stories.models.Coin
 import com.vshkl.coins.utils.svg.SvgSoftwareLayerSetter
 
 class CoinsListAdapter(context: Context) : RecyclerView.Adapter<CoinsListViewHolder>() {
@@ -28,11 +28,11 @@ class CoinsListAdapter(context: Context) : RecyclerView.Adapter<CoinsListViewHol
 
     override fun onBindViewHolder(holder: CoinsListViewHolder, position: Int) {
         with(coins[position]) {
-            holder.tvRank.text = rank.toString()
+            holder.tvRank.text = rank
             holder.tvName.text = name
             holder.tvSymbol.text = symbol
-            holder.tvChange.text = change.toString()
-            holder.tvMarketCap.text = marketCap.toString()
+            holder.tvChange.text = change
+            holder.tvMarketCap.text = marketCap
             holder.tvPrice.text = price
 
             glideRequestBuilder

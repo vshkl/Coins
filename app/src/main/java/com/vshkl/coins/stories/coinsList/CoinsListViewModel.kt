@@ -14,12 +14,7 @@ class CoinsListViewModel : ViewModel() {
             Mappers.mapCoins(coinsData.data.coins)
         }
     }
-    private var offset = 0
-
-    fun loadMoreCoins() {
-        offset += 50
-//        fetchCoins()
-    }
 
     fun getCoins() = coinsData
+    
 }

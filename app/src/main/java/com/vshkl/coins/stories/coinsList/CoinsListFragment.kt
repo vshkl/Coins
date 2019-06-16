@@ -46,7 +46,7 @@ class CoinsListFragment : Fragment() {
         rvCoins.addItemDecoration(DividerItemDecoration(context!!, DividerItemDecoration.VERTICAL))
         rvCoins.addOnScrollListener(object : EndlessScrollListener(linearLayoutManager) {
             override fun onLoadMore(page: Int, totalItemsCount: Int, view: RecyclerView) {
-                viewModel.loadMoreCoins()
+//                viewModel.loadMoreCoins()
             }
         })
         rvCoins.adapter = coinsListAdapter

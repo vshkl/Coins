@@ -32,7 +32,6 @@ class CoinsListFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProviders.of(this).get(CoinsListViewModel::class.java)
-        viewModel.loadCoins()
         viewModel.getCoins().observe(viewLifecycleOwner, Observer { coins ->
             coinsListAdapter.setCoins(coins)
         })

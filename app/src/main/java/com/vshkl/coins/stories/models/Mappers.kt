@@ -1,6 +1,5 @@
-package com.vshkl.coins.stories
+package com.vshkl.coins.stories.models
 
-import com.vshkl.coins.stories.models.Coin
 import com.vshkl.coins.network.models.Coin as NetworkCoin
 
 object Mappers {

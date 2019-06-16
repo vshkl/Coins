@@ -17,7 +17,20 @@ object Mappers {
         marketCap = formatMarketCap(coin.marketCap)
     )
 
-    private fun formatPrice(price: String?): String = "$%.2f".format(price?.toDouble())
+    private fun formatPrice(price: String?): String = when {
+        price != null -> {
+            val priceNum = price.toDouble()
+            when {
+                priceNum < 0.1 -> "$%.3f".format(priceNum)
+                priceNum < 0.01 -> "$%.4f".format(priceNum)
+                priceNum < 0.001 -> "$%.5f".format(priceNum)
+                priceNum < 0.0001 -> "$%.6f".format(priceNum)
+                priceNum < 0.00001 -> "$%.7f".format(priceNum)
+                else -> "$%.2f".format(priceNum)
+            }
+        }
+        else -> ""
+    }
 
     private fun formatChange(change: Double?): String = when {
         change != null ->
@@ -29,11 +42,16 @@ object Mappers {
         else -> ""
     }
 
-    private fun formatMarketCap(marketCap: Long?): String {
-        return when {
-            marketCap != null -> "$$marketCap"
-            else -> ""
+    private fun formatMarketCap(marketCap: Long?): String = when {
+        marketCap != null -> {
+            when {
+                marketCap > 999999999 -> "$${marketCap / 1000000000} B"
+                marketCap > 999999 -> "$${marketCap / 1000000} B"
+                marketCap > 99999 -> "$${marketCap / 1000} B"
+                else ->"$$marketCap"
+            }
         }
+        else -> ""
     }
 
 }
